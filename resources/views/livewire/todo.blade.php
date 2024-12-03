@@ -22,18 +22,30 @@
                 </div>
             </div>
             
-            <!-- Task List -->
+            <!-- Task List Table -->
             <div class="mt-4">
-                <ul class="list-group">
-                    @foreach($tasks as $task)
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ $task->id }}: {{ $task->task }}
-                            <button wire:click="removeTask({{ $task->id }})" class="btn btn-danger btn-sm">
-                                Delete
-                            </button>
-                        </li>
-                    @endforeach
-                </ul>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Task</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($tasks as $task)
+                            <tr>
+                                <td>{{ $task->id }}</td>
+                                <td>{{ $task->task }}</td>
+                                <td>
+                                    <button wire:click="removeTask({{ $task->id }})" class="btn btn-danger btn-sm">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
